@@ -8,6 +8,7 @@ controller.route('/').get(async (req, res) => {
     const list = await productSchema.find()
     if(list) {
         for(let product of list) {
+            console.log(product)
             products.push({
                 articleNumber: product._id,
                 name: product.name,
@@ -132,7 +133,7 @@ controller.route('/:articleNumber').delete(async (req, res) => {
 
 //Put - Update
 controller.route('/:articleNumber').put( (req, res) => {
-    productSchema.findOneAndUpdate({articleNumber : req.params.id}, 
+    productSchema.findByIdAndUpdate(req.params.articleNumber, 
     {$set : { name: req.body.name,
               description: req.body.description,
               price: req.body.price,
