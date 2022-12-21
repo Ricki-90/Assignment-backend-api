@@ -1,6 +1,7 @@
 const express = require('express')
 const controller  = express.Router()
 const productSchema = require('../schemas/productSchema')
+const { authorize } = require('../middlewares/authorization')
 
 // unsecured routes
 controller.route('/').get(async (req, res) => {
@@ -88,9 +89,8 @@ controller.route('/product/details/:articleNumber').get(async (req, res) => {
 })
 
 // secured routes
-
 //Create
-controller.route('/').post(async (req, res) => {
+controller.route('/').post(authorize, async (req, res) => {
     const { name, description, price, category, tag, rating, imageName } = req.body
 
     if (!name || !price)
@@ -117,7 +117,7 @@ controller.route('/').post(async (req, res) => {
 })
 
 //Delete
-controller.route('/:articleNumber').delete(async (req, res) => {
+controller.route('/:articleNumber').delete(authorize, async (req, res) => {
     if(!req.params.articleNumber)
         res.status(400).json(`no article number was specificed.`)
     else {
