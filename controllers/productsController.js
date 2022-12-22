@@ -9,7 +9,6 @@ controller.route('/').get(async (req, res) => {
     const list = await productSchema.find()
     if(list) {
         for(let product of list) {
-            console.log(product)
             products.push({
                 articleNumber: product._id,
                 name: product.name,
@@ -21,7 +20,7 @@ controller.route('/').get(async (req, res) => {
                 imageName: product.imageName
             })
         }
-        res.status(200).json(products)
+        res.status(201).json(products)
     }
     else
         res.status(400).json()

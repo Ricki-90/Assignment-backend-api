@@ -28,7 +28,7 @@ controller.route('/signup').post(async(req, res) => {
         })
 
         if (user) 
-            res.status(200).json({test: 'your user account was created successfully.'})
+            res.status(201).json({test: 'your user account was created successfully.'})
         else
             res.status(400).json({test: 'something when wrong when we tried to create your user account.'})
     }
