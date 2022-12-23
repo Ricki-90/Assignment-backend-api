@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const express = require('express')
 const controller  = express.Router()
-
 const { generateAccessToken } = require('../middlewares/authorization')
 const usersSchema = require('../schemas/userSchema')
 
