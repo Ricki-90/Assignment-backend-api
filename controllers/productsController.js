@@ -131,7 +131,7 @@ controller.route('/:articleNumber').delete(authorize, async (req, res) => {
 })
 
 //Put - Update
-controller.route('/:articleNumber').put( (req, res) => {
+controller.route('/:articleNumber').put(authorize, (req, res) => {
     productSchema.findByIdAndUpdate(req.params.articleNumber, 
     {$set : { name: req.body.name,
               description: req.body.description,

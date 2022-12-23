@@ -14,7 +14,6 @@ app.use(express.urlencoded({ extended: false}))
 app.use('/api/products', require('./controllers/productsController.js'))
 app.use('/api/authentication', require('./controllers/authenticationController'))
 
-
 //initialize
 initMongoDB()
 app.listen(port, () => console.log('Web Api is running on http://localhost:${port}'))

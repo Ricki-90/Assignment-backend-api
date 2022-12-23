@@ -15,7 +15,7 @@ controller.route('/signup').post(async(req, res) => {
 
     const exists = await usersSchema.findOne({email})
     if (exists)
-        res.status(400).json({text: 'a user with the same e-amil adress already exists'})
+        res.status(400).json({text: 'a user with the same e-mail adress already exists'})
     else {
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(password, salt)

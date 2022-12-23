@@ -17,8 +17,7 @@ const authorize = (req, res, next) => {
         }
     }  else {
         res.status(401).json()
-    }
-    
+    } 
 }
 
 module.exports = { generateAccessToken, authorize }
